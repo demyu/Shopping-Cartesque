@@ -40,8 +40,3 @@ function checkIfExist($id, $conn){
     return false;
 }
 
-function console_log( $id ){
-    echo '<script>';
-    echo 'console.log('. json_encode( $id ) .')';
-    echo '</script>';
-  }

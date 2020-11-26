@@ -46,7 +46,7 @@ $total = 0;
                 <?php
                     echo $array[$row['id']]["price"]; 
                 ?>
-                <input type="number" id="quantity" name="quantity" onchange="checkTextBox(this, <?php echo $array[$row['id']]["price"] ?>)" min="1" max="999" value ="<?php echo $row['count'] ?>">
+                <input type="number" id="quantity" name="quantity" onchange="checkTextBox(this, <?php echo $array[$row['id']]["price"] ?>, <?php echo $row['id'] ?>)" min="1" max="999" value ="<?php echo $row['count'] ?>">
                 <input type="button" value="Delete" onclick="addToCart(<?php echo $array[$row['id']]["id"] ?>)">
 
                 
@@ -63,10 +63,28 @@ $total = 0;
 
 
         <script>
-            function checkTextBox(element, price){
+            function checkTextBox(element, price, id){
                 var total = document.getElementById("Total");
                 total.value = element.value * price;
+                var data = id;
+                var numberitems = element.value;
+                $.ajax({
+                    url: "quantityUpdate.php",
+                    type: 'POST',
+                    data: { 'data' : data, 'numberitems' : numberitems},
+                    success: function(){
+                        console.log("Success")
+                    },
+                    error: function(xhr) {
+                    alert('Error!  Status = ' + xhr.status + " Message = " + xhr.statusText);
+
+                }
+            });
+
             }
         </script>
+
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script>
 </body>
 </html>
