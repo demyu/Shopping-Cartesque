@@ -22,10 +22,12 @@ $total = 0;
     <title>Cart</title>
 </head>
 <body>
+    <a href="index.php">Go to Store</a>
     <?php
         if ($result->num_rows == 0) {
     ?>
         <h1>Your cart is empty</h1>
+        
     <?php
         }else{
             while ($row = $result->fetch_assoc()) {
@@ -47,7 +49,7 @@ $total = 0;
                     echo $array[$row['id']]["price"]; 
                 ?>
                 <input type="number" id="quantity" name="quantity" onchange="checkTextBox(this, <?php echo $row['id'] ?>)" min="1" max="999" value ="<?php echo $row['count'] ?>">
-                <input type="button" value="Delete" onclick="delete(<?php echo $row['id'] ?>)">
+                <input type="button" value="Delete" onclick="deleted(<?php echo $row['id'] ?>)">
 
                 
                 
@@ -89,6 +91,7 @@ $total = 0;
                     data: { 'data' : data},
                     success: function(data){
                         total.value = data;
+                        location.reload();
                     },
                     error: function(xhr) {
                     alert('Error!  Status = ' + xhr.status + " Message = " + xhr.statusText);

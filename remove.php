@@ -11,10 +11,12 @@ $conn = new mysqli($servername, $username, $password, $dbname);
   
 $id = $_POST['data'];
 
-$sql = "Delete from cart where id = '$id'";
 
+$sql = "Delete from cart where id = '$id'";
 $conn->query($sql);
 
+$filegetter = file_get_contents("items.json");
+$array = json_decode($filegetter, true);
 
 $sql = "Select * from cart";
 $result = $conn->query($sql);
