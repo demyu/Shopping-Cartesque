@@ -1,0 +1,22 @@
+[
+  {
+        "id":0,
+        "name": "Text",
+        "price": 22,
+        "old_price": 11,
+        "desc": "Desc Text",
+        "rate": 5.0,
+        "sku": 123456,
+        "img": "1.jpg"
+    },
+    {
+        "id":1,
+        "name": "Text2",
+        "price": 223,
+        "old_price": 111,
+        "desc": "Desc Text",
+        "rate": 6.0,
+        "sku": 123456,
+        "img": "2.jpg"
+    }
+]
