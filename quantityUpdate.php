@@ -21,4 +21,14 @@ $itemName = $array[$id]["name"];
 $sql = "Update cart set count = '$numberitems' where id = '$id'";
 $conn->query($sql);
 
+$sql = "Select * from cart";
+$result = $conn->query($sql);
+$total = 0;
+
+while ($row = $result->fetch_assoc()) {
+    $base = $array[$row['id']]["price"] * $row['count'];
+    $total += $base;
+}
+
+echo $total;
 ?>
