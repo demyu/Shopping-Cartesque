@@ -8,6 +8,9 @@
 </head>
 
 <body>
+
+    <a href="cart.php">Go to Cart</a>
+
     <?php
         $filegetter = file_get_contents("items.json");
         $array = json_decode($filegetter, true);
@@ -25,15 +28,22 @@
     for ($i=0; $i < count($array); $i++) { 
     ?>
         <h1>
+            <?php
+                    echo $array[$i]["name"]; 
+            ?>
+        </h1>
+        <h1>
             <img src="img/<?php echo $array[$i]["img"]; ?>" style="width:100px;height:170px;"> 
             
+            
+            $
             <?php
-                echo $array[$i]["name"]; 
+                echo $array[$i]["price"]; 
             ?>
 
             <input type="button" value="Add to cart" onclick="addToCart(<?php echo $array[$i]["id"] ?>)">
 
-
+            
         
         </h1>
 
