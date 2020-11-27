@@ -23,6 +23,7 @@ $total = 0;
 </head>
 <body>
     <a href="index.php">Go to Store</a>
+    
     <?php
         if ($result->num_rows == 0) {
     ?>
@@ -48,7 +49,7 @@ $total = 0;
                 <?php
                     echo $array[$row['id']]["price"]; 
                 ?>
-                <input type="number" id="quantity" name="quantity" onchange="checkTextBox(this, <?php echo $row['id'] ?>)" min="1" max="999" value ="<?php echo $row['count'] ?>">
+                <input type="number" onkeypress="return event.charCode >= 48" id="quantity" name="quantity" onchange="checkTextBox(this, <?php echo $row['id'] ?>)" min="1" max="999" value ="<?php echo $row['count'] ?>">
                 <input type="button" value="Delete" onclick="deleted(<?php echo $row['id'] ?>)">
 
                 
@@ -59,10 +60,15 @@ $total = 0;
     
         <?php
             }
+            ?>
+            <h1>
+                Total : <input type="number" value = "<?php echo $total ?>" readonly id = "Total">
+                <input type="button" value="Checkout" onclick="checkout()">
+            </h1>
+            <?php
         }
         ?>
-        <h1>Total : <input type="number" value = "<?php echo $total ?>" readonly id = "Total"></h1>
-
+       
 
         <script>
             function checkTextBox(element, id){
@@ -92,6 +98,19 @@ $total = 0;
                     success: function(data){
                         total.value = data;
                         location.reload();
+                    },
+                    error: function(xhr) {
+                    alert('Error!  Status = ' + xhr.status + " Message = " + xhr.statusText);
+                }
+            });
+            }
+            function checkout(){
+                $.ajax({
+                    url: "checkout.php",
+                    type: 'POST',
+                    success: function(){
+                        alert('Sucessfully bought item(s)');
+                        window.location.href = 'index.php';
                     },
                     error: function(xhr) {
                     alert('Error!  Status = ' + xhr.status + " Message = " + xhr.statusText);

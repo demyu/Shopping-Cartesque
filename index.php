@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
+    <title>Shop</title>
 </head>
 
 <body>
@@ -28,9 +28,7 @@
     for ($i=0; $i < count($array); $i++) { 
     ?>
         <h1>
-            <?php
-                    echo $array[$i]["name"]; 
-            ?>
+            <a href="item.php?id=<?php echo $i?>"><?php echo $array[$i]["name"]; ?></a> 
         </h1>
         <h1>
             <img src="img/<?php echo $array[$i]["img"]; ?>" style="width:100px;height:170px;"> 
