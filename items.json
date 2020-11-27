@@ -18,5 +18,15 @@
         "rate": 6.0,
         "sku": 123456,
         "img": "2.jpg"
+    },
+    {
+        "id":2,
+        "name": "Text3",
+        "price": 2234,
+        "old_price": 1121,
+        "desc": "Desc Text",
+        "rate": 7.0,
+        "sku": 123456,
+        "img": "3.jpg"
     }
 ]
